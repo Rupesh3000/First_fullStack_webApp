@@ -12,6 +12,6 @@ const loginText = document.querySelector(".title-text .login");
            loginText.style.marginLeft = "0%";
          });
          signupLink.onclick = (()=>{
-           signupBtn.click();
+           loginBtn.click();
            return false;
 });
