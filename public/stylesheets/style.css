@@ -83,6 +83,10 @@ nav a.active {
   
 }
 
+.login_and_icons a i {
+    background-color: black;
+}
+
 section {
    
     padding: 85px 20px 20px;

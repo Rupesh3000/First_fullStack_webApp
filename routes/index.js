@@ -8,7 +8,7 @@ passport.use(new localStrategy(userModel.authenticate()));
 
 /* GET home page. */
 router.get("/", function (req ,res) {
-    res.render("index");
+    res.render("index", { isAuthenticated: req.isAuthenticated() });
     
 })
 

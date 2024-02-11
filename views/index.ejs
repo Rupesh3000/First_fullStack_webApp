@@ -29,7 +29,16 @@
             <!-- <i class="fa-solid fa-heart"></i>
             <i class="fa-solid fa-cart-shopping"></i> -->
 
-            <a href="/loginPage">SignPu</a>
+            <!-- <a href="/loginPage">SignUp</a> -->
+
+            <% if (isAuthenticated) { %>
+              <!-- Show logout button or user profile link -->
+              <a href="/logout">LogOut</a>
+          <% } else { %>
+              <!-- Show login or signup button -->
+
+              <a href="/loginPage">Sign Up</a>
+          <% } %>
            
             
         </div>
