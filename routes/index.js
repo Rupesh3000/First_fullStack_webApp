@@ -1,66 +1,76 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 const userModel = require("./users");
 const passport = require("passport");
 const localStrategy = require("passport-local");
+const getProductData = require("../productData");
 
 passport.use(new localStrategy(userModel.authenticate()));
 
 /* GET home page. */
-router.get("/", function (req ,res) {
-    res.render("index", { isAuthenticated: req.isAuthenticated() });
-    
-})
 
-router.get("/loginPage", function (req ,res) {
-    res.render("loginPage");
-})
-
-
-router.get("/profile", isLoggedIn, function (req ,res){
-    res.render("profile")
+router.get("/", function (req, res) {
+  res.render("index", { isAuthenticated: req.isAuthenticated() });
 });
 
-router.get("/buyingPage", isLoggedIn,function (req ,res) {
-    res.render("buyingPage");
-})
-
-
-router.post("/register", function(req , res) {
-    let  userdata = new userModel({
-        username:req.body.username,
-        email:req.body.email,
-        
-    });
-
-    userModel.register(userdata, req.body.password)
-    .then(function (registereduser){
-        passport.authenticate("local")(req,res, function() {
-            res.redirect("/");
-        })
-    })
+router.get("/buyingPage/:productId", function (req, res, next) {
+  let productData = getProductData(req.params.productId);
+  res.render("buyingPage", {
+    title: productData.name,
+    ...productData,
+  });
 });
 
-router.post("/login", passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/loginPage"
-}),  function(req,res){});
+router.get("/loginPage", function (req, res) {
+  res.render("loginPage");
+});
 
+router.get("/profile", isLoggedIn, function (req, res) {
+  res.render("profile");
+});
 
-router.get("/logout", function(req, res , next){
-    req.logout(function(err) {
-        if (err) {return next(err);}
+router.get("/buyingPage", function (req, res) {
+  res.render("buyingPage");
+});
+
+router.post("/register", function (req, res) {
+  let userdata = new userModel({
+    username: req.body.username,
+    email: req.body.email,
+  });
+
+  userModel
+    .register(userdata, req.body.password)
+    .then(function (registereduser) {
+      passport.authenticate("local")(req, res, function () {
         res.redirect("/");
+      });
     });
 });
 
-function isLoggedIn(req,res,next) {
-    if(req.isAuthenticated()) {
-        return next();
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/loginPage",
+  }),
+  function (req, res) {}
+);
+
+router.get("/logout", function (req, res, next) {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
     }
-    res.redirect("/loginPage");
+    res.redirect("/");
+  });
+});
+
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect("/loginPage");
 }
-
-
 
 module.exports = router;

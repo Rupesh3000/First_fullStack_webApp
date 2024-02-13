@@ -1,209 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/buyingPage.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/buyingPage.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
     <title>Document</title>
-</head>
-<body>
-   <div class="wrapper">
-    <header>
-
-        <a href="" class="logo"><img src="/images/logo.png" alt=""></a>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <a href="" class="logo"><img src="/images/logo.png" alt="" /></a>
 
         <nav>
-            <a href="/" class="active">Home</a>
-            <a href="/profile"> <i class="fa-solid fa-user"></i></a>
+          <a href="/" class="active">Home</a>
+          <a href="/profile"> <i class="fa-solid fa-user"></i></a>
         </nav>
-        
+      </header>
 
-    </header>
+      <div class="main-container">
+        <div class="container">
+          <section class="buying-container">
+            <div class="item-container">
+              <div class="imgDiv">
+                <img src="/images/<%= image %>" alt="" />
+              </div>
+              <div class="detailedDiv">
+                <h3><%= name %></h3>
+                <h2><%= price %></h2>
+                <p>Description: <%= description %></p>
 
-    <div class="main-container">
-      <div class="container">
-
-        <section class="buying-container">
-          <div class="item-container">
-            <div class="imgDiv">
-             <img src="/images/img_1.jpg" alt="">
-            </div>
-            <div class="detailedDiv">
-              <h3>Grey Snakeskin</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem animi mollitia sint, earum, ipsam debitis tenetur, excepturi ullam cum esse adipisci! Eligendi magnam nulla vel nihil, explicabo a rerum cumque.</p>
-              <div class="sizeAndcounter">
-                <div class="size">
-                  <h4>size :</h4>
-                  <button>7</button><button>8</button><button>9</button><button>10</button>
-                </div>
-                <div class="counter-container">
-                  <button id="decrement">-</button><h5 id="count">0</h5><button id="increment">+</button>
+                <div class="sizeAndcounter">
+                  <div class="size">
+                    <h4>size :</h4>
+                    <button>7</button><button>8</button><button>9</button
+                    ><button>10</button>
+                  </div>
+                  <div class="counter-container">
+                    <button id="decrement">-</button>
+                    <h5 id="count">0</h5>
+                    <button id="increment">+</button>
+                  </div>
                 </div>
               </div>
             </div>
 
-          </div>
-          <div class="form-container">
-            <div class="form-info">
-              <div class="user-mail">
-                <h2>Constomer Information</h2>
-                <input type="email" name="" id="" placeholder="username or email">
-              </div>
+            <!-- from container start  -->
+            <div class="form-container">
+              <div class="form-info">
+                <div class="user-mail">
+                  <h2>Constomer Information</h2>
+                  <input
+                    type="email"
+                    name=""
+                    id=""
+                    placeholder="username or email"
+                  />
+                </div>
 
-              <div class="billing-details">
-                <h2>Billing Details</h2>
-                <div class="inputs">
-                  <input type="text" name="" id="" placeholder="First Name" required>
-                  <input type="text" name="" id="last-name" placeholder="Last Name" required>
-                  <input type="text" name="" id="company-name" placeholder="Street Address" required>
-                  <input type="text" name="" id="company-name" placeholder="Company Name (Optional)">
-                  <input type="text" name="" id="company-name" placeholder="country">
-                  <input type="text" name="" id="" placeholder="State" required>
-                  <input type="text" name="" id="last-name" placeholder="City" required>
-                  <input type="text" name="" id="" placeholder="Pincode" required>
-                  <input type="text" name="" id="last-name" placeholder="Phone" required>
+                <div class="billing-details">
+                  <h2>Billing Details</h2>
+                  <div class="inputs">
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      placeholder="First Name"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name=""
+                      id="last-name"
+                      placeholder="Last Name"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name=""
+                      id="company-name"
+                      placeholder="Street Address"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name=""
+                      id="company-name"
+                      placeholder="Company Name (Optional)"
+                    />
+                    <input
+                      type="text"
+                      name=""
+                      id="company-name"
+                      placeholder="country"
+                    />
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      placeholder="State"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name=""
+                      id="last-name"
+                      placeholder="City"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      placeholder="Pincode"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name=""
+                      id="last-name"
+                      placeholder="Phone"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="payment-info">
+                <div class="Yorder">
+                  <table>
+                    <tr>
+                      <th colspan="2">Your order</th>
+                    </tr>
+                    <tr>
+                      <td><%= name %></td>
+                      <td><%= price %></td>
+                    </tr>
+                    <tr>
+                      <td>Subtotal</td>
+                      <td><%= price %></td>
+                    </tr>
+                    <tr>
+                      <td>Shipping</td>
+                      <td>Free shipping</td>
+                    </tr>
+                  </table>
+                  <div>
+                    <input type="radio" name="dbt" value="dbt" checked /> Direct
+                    Bank Transfer
+                  </div>
+                  <p>
+                    Make your payment directly into our bank account. Please use
+                    your Order ID as the payment reference. Your order will not
+                    be shipped until the funds have cleared in our account.
+                  </p>
+                  <div>
+                    <input type="radio" name="dbt" value="cd" /> Cash on
+                    Delivery
+                  </div>
+                  <div>
+                    <input type="radio" name="dbt" value="cd" /> Paypal
+                    <span>
+                      <!-- <img src="https://www.logolynx.com/images/logolynx/c3/c36093ca9fb6c250f74d319550acac4d.jpeg" alt="" width="50"> -->
+                    </span>
+                  </div>
+                  <button type="button">Place Order</button>
                 </div>
               </div>
             </div>
-            <div class="payment-info">
-              <div class="Yorder">
-                <table>
-                  <tr>
-                    <th colspan="2">Your order</th>
-                  </tr>
-                  <tr>
-                    <td>Product Name x 2(Qty)</td>
-                    <td>$88.00</td>
-                  </tr>
-                  <tr>
-                    <td>Subtotal</td>
-                    <td>$88.00</td>
-                  </tr>
-                  <tr>
-                    <td>Shipping</td>
-                    <td>Free shipping</td>
-                  </tr>
-                </table>
-                <div>
-                  <input type="radio" name="dbt" value="dbt" checked> Direct Bank Transfer
-                </div>
-                <p>
-                    Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.
-                </p>
-                <div>
-                  <input type="radio" name="dbt" value="cd"> Cash on Delivery
-                </div>
-                <div>
-                  <input type="radio" name="dbt" value="cd"> Paypal <span>
-                  <!-- <img src="https://www.logolynx.com/images/logolynx/c3/c36093ca9fb6c250f74d319550acac4d.jpeg" alt="" width="50"> -->
-                  </span>
-                </div>
-                <button type="button">Place Order</button>
-              </div>
-            </div>
-          </div>
+          </section>
 
-        </section>
-        
-        
-         <section class="products-container">
-          <h1 id="rp">More products</h1>
+          <section class="products-container">
+            <h1 id="rp">More products</h1>
 
-          <div class="products">
-            <a href="http://">
-              <div class="card">      
-                <div class="img_div">
-                    <img src="/images/img_5.webp" alt="Product Image">
+            <div class="products">
+              <a href="http://">
+                <div class="card">
+                  <div class="img_div">
+                    <img src="/images/img_5.webp" alt="Product Image" />
                     <span>Price: $70.00</span>
-                </div>
+                  </div>
 
-                <div class="img_info">
+                  <div class="img_info">
                     <h1>Navy Brown Red</h1>
                     <button>Add to Cart</button>
-                </div> 
+                  </div>
+                </div>
+              </a>
+
+              <a href="">
+                <div class="card">
+                  <div class="img_div">
+                    <img src="/images/img_2.jpg" alt="Product Image" />
+                    <span>Price: $80.00</span>
+                  </div>
+
+                  <div class="img_info">
+                    <h1>Black & White Patent</h1>
+                    <button>Add to Cart</button>
+                  </div>
+                </div>
+              </a>
+
+              <a href="http://">
+                <div class="card">
+                  <div class="img_div">
+                    <img src="/images/img_3.webp" alt="Product Image" />
+                    <span>Price: $50.00</span>
+                  </div>
+
+                  <div class="img_info">
+                    <h1>Chelsea Dealer</h1>
+                    <button>Add to Cart</button>
+                  </div>
+                </div>
+              </a>
+
+              <a href="http://">
+                <div class="card">
+                  <div class="img_div">
+                    <img src="/images/img_4.webp" alt="Product Image" />
+                    <span>Price: $60.00</span>
+                  </div>
+
+                  <div class="img_info">
+                    <h1>Brogue Military</h1>
+                    <button>Add to Cart</button>
+                  </div>
+                </div>
+              </a>
             </div>
-            </a>
-
-                <a href="">
-                  <div class="card">      
-                    <div class="img_div">
-                        <img src="/images/img_2.jpg" alt="Product Image">
-                        <span>Price: $80.00</span>
-                    </div>
-
-                    <div class="img_info">
-                        <h1>Black & White Patent</h1>
-                        <button>Add to Cart</button>
-                    </div> 
-                </div>
-                </a>
-
-                <a href="http://">
-                  <div class="card">      
-                    <div class="img_div">
-                        <img src="/images/img_3.webp" alt="Product Image">
-                        <span>Price: $50.00</span>
-                    </div>
-
-                    <div class="img_info">
-                        <h1>Chelsea Dealer</h1>
-                        <button>Add to Cart</button>
-                    </div> 
-                </div>
-                </a>
-
-                <a href="http://">
-                  <div class="card">      
-                    <div class="img_div">
-                        <img src="/images/img_4.webp" alt="Product Image">
-                        <span>Price: $60.00</span>
-                    </div>
-
-                    <div class="img_info">
-                        <h1>Brogue Military</h1>
-                        <button>Add to Cart</button>
-                    </div> 
-                </div>
-                </a>
-
-          </div>
-         </section>
-        
-
+          </section>
+        </div>
       </div>
-    </div>
-        <footer>
-          <div class="footer-container">
-            <div class="footer_cards">
-              <div class="shopInfo">
-                <img src="/images/logo.png" alt="" />
-                <p>
-                  Welcome to Cobbler, your go-to destination for exquisite
-                  footwear & exceptional craftsmanship. With a passion for quality
-                  and timeless style, we pride ourselves with this.
-                </p>
-              </div>
+      <footer>
+        <div class="footer-container">
+          <div class="footer_cards">
+            <div class="shopInfo">
+              <img src="/images/logo.png" alt="" />
+              <p>
+                Welcome to Cobbler, your go-to destination for exquisite
+                footwear & exceptional craftsmanship. With a passion for quality
+                and timeless style, we pride ourselves with this.
+              </p>
             </div>
-            <div class="footer_cards">
-              <div class="contactUs">
-                <h4>Contact Us</h4>
-                <a href=""><i class="fa-solid fa-phone"></i> +91 1908023000</a>
-                <a href=""
-                  ><i class="fa-solid fa-envelope"></i>
-                  threethousandrdj@gmail.com</a
-                >
-                <div class="socialIcons">
-                  <i class="fa-brands fa-instagram"></i>
-                  <i class="fa-brands fa-twitter"></i>
-                  <!-- <i class="fa-brands fa-linkedin"></i>
+          </div>
+          <div class="footer_cards">
+            <div class="contactUs">
+              <h4>Contact Us</h4>
+              <a href=""><i class="fa-solid fa-phone"></i> +91 1908023000</a>
+              <a href=""
+                ><i class="fa-solid fa-envelope"></i>
+                threethousandrdj@gmail.com</a
+              >
+              <div class="socialIcons">
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <!-- <i class="fa-brands fa-linkedin"></i>
                   <i class="fa-brands fa-github"></i> -->
-                </div>
               </div>
             </div>
           </div>
-        </footer>
-</div>
-   <script src="/javascripts/buyingPage.js"></script>
-</body>
+        </div>
+      </footer>
+    </div>
+    <script src="/javascripts/buyingPage.js"></script>
+  </body>
 </html>

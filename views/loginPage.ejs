@@ -1,72 +1,88 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-   <head>
-      <meta charset="utf-8">
-      <title>Login and Registration Form in HTML | CodingNepal</title>
-      <link rel="stylesheet" href="/stylesheets/login.css">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
-   <body>
-      <div class="wrapper">
-         <div class="title-text">
-            <div class="title login">
-               Signup
-            </div>
-            <div class="title signup">
-               Login
-            </div>
-         </div>
-         <div class="form-container">
-            <div class="slide-controls">
-               <input type="radio" name="slide" id="login" checked>
-               <input type="radio" name="slide" id="signup">
-               <label for="login" class="slide login">Signup</label>
-               <label for="signup" class="slide signup">Login</label>
-               <div class="slider-tab"></div>
-            </div>
-            <div class="form-inner">
-
-               
-               <form class="login" action="/register" method="post">
-                  <div class="field">
-                     <input name="username" type="text" placeholder="User Name" required>
-                  </div>
-                  <div class="field">
-                     <input name="email" type="text" placeholder="Email Address" required>
-                  </div>
-                  <div class="field">
-                     <input name="password" type="password" placeholder="Password" required>
-                  </div>
-                  <div class="field btn">
-                     <div class="btn-layer"></div>
-                     <input type="submit" value="Signup">
-                  </div>
-               </form >
-               <form  class="signup" action="/login" method="post">
-                  <div class="field">
-                     <input name="username" type="text" placeholder="Email Address or Username" required>
-                  </div>
-                  
-                  <div class="field">
-                     <input name="password" type="password" placeholder="Password" required>
-                  </div>
-                  <div class="pass-link">
-                     <a href="#">Forgot password?</a>
-                  </div>
-                  <div class="field btn">
-                     <div class="btn-layer"></div>
-                     <input type="submit" value="Login">
-                  </div>
-                  <div class="signup-link">
-                     Not a member? <a href="">Signup now</a>
-                  </div>
-                  
-                  
-               </form>
-
-            </div>
-         </div>
+  <head>
+    <meta charset="utf-8" />
+    <title>Login and Registration Form in HTML | CodingNepal</title>
+    <link rel="stylesheet" href="/stylesheets/login.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="title-text">
+        <div class="title login">Signup</div>
+        <div class="title signup">Login</div>
       </div>
-      <script src="/javascripts/login.js"></script>
-   </body>
+      <div class="form-container">
+        <div class="slide-controls">
+          <input type="radio" name="slide" id="login" checked />
+          <input type="radio" name="slide" id="signup" />
+          <label for="login" class="slide login">Signup</label>
+          <label for="signup" class="slide signup">Login</label>
+          <div class="slider-tab"></div>
+        </div>
+        <div class="form-inner">
+          <form class="login" action="/register" method="post">
+            <div class="field">
+              <input
+                name="username"
+                type="text"
+                placeholder="User Name"
+                required
+              />
+            </div>
+            <div class="field">
+              <input
+                name="email"
+                type="text"
+                placeholder="Email Address"
+                required
+              />
+            </div>
+            <div class="field">
+              <input
+                name="password"
+                type="password"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <div class="field btn">
+              <div class="btn-layer"></div>
+              <input type="submit" value="Signup" />
+            </div>
+          </form>
+          <form class="signup" action="/login" method="post">
+            <div class="field">
+              <input
+                name="username"
+                type="text"
+                placeholder="Email Address or Username"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <input
+                name="password"
+                type="password"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <div class="pass-link">
+              <a href="#">Forgot password?</a>
+            </div>
+            <div class="field btn">
+              <div class="btn-layer"></div>
+              <input type="submit" value="Login" />
+            </div>
+            <div class="signup-link">
+              Not a member? <a href="">Signup now</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="/javascripts/login.js"></script>
+  </body>
 </html>
