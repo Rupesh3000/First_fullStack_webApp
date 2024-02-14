@@ -50,125 +50,125 @@
 
             <!-- from container start  -->
             <div class="form-container">
-              <div class="form-info">
-                <div class="user-mail">
-                  <h2>Constomer Information</h2>
-                  <input
-                    type="email"
-                    name=""
-                    id=""
-                    placeholder="username or email"
-                  />
-                </div>
-
+              <form action="/submit-order" method="post" class="form-info">
                 <div class="billing-details">
                   <h2>Billing Details</h2>
                   <div class="inputs">
                     <input
                       type="text"
-                      name=""
+                      name="emailorusername"
                       id=""
+                      placeholder="username or email"
+                    />
+
+                    <input
+                      type="text"
+                      name="firstname"
+                      id="lasename"
                       placeholder="First Name"
                       required
                     />
                     <input
                       type="text"
-                      name=""
+                      name="lasename"
                       id="last-name"
                       placeholder="Last Name"
                       required
                     />
                     <input
                       type="text"
-                      name=""
+                      name="address"
                       id="company-name"
                       placeholder="Street Address"
                       required
                     />
                     <input
                       type="text"
-                      name=""
+                      name="companyname"
                       id="company-name"
                       placeholder="Company Name (Optional)"
                     />
                     <input
                       type="text"
-                      name=""
+                      name="country"
                       id="company-name"
                       placeholder="country"
                     />
                     <input
                       type="text"
-                      name=""
+                      name="state"
                       id=""
                       placeholder="State"
                       required
                     />
                     <input
                       type="text"
-                      name=""
+                      name="city"
                       id="last-name"
                       placeholder="City"
                       required
                     />
                     <input
                       type="text"
-                      name=""
+                      name="pincode"
                       id=""
                       placeholder="Pincode"
                       required
                     />
                     <input
                       type="text"
-                      name=""
+                      name="phone"
                       id="last-name"
                       placeholder="Phone"
                       required
                     />
                   </div>
                 </div>
-              </div>
-              <div class="payment-info">
-                <div class="Yorder">
-                  <table>
-                    <tr>
-                      <th colspan="2">Your order</th>
-                    </tr>
-                    <tr>
-                      <td><%= name %></td>
-                      <td><%= price %></td>
-                    </tr>
-                    <tr>
-                      <td>Subtotal</td>
-                      <td><%= price %></td>
-                    </tr>
-                    <tr>
-                      <td>Shipping</td>
-                      <td>Free shipping</td>
-                    </tr>
-                  </table>
-                  <div>
-                    <input type="radio" name="dbt" value="dbt" checked /> Direct
-                    Bank Transfer
+
+                <div class="payment-info">
+                  <div class="Yorder">
+                    <table>
+                      <tr>
+                        <th colspan="2">Your order</th>
+                      </tr>
+                      <tr>
+                        <td><%= name %></td>
+                        <td><%= price %></td>
+                      </tr>
+                      <tr>
+                        <td>Subtotal</td>
+                        <td><%= price %></td>
+                      </tr>
+                      <tr>
+                        <td>Shipping</td>
+                        <td>Free shipping</td>
+                      </tr>
+                    </table>
+                    <div>
+                      <input type="radio" name="dbt" value="dbt" checked />
+                      Direct Bank Transfer
+                    </div>
+                    <p>
+                      Make your payment directly into our bank account. Please
+                      use your Order ID as the payment reference. Your order
+                      will not be shipped until the funds have cleared in our
+                      account.
+                    </p>
+                    <div>
+                      <input type="radio" name="dbt" value="cd" /> Cash on
+                      Delivery
+                    </div>
+                    <div>
+                      <input type="radio" name="dbt" value="cd" /> Paypal
+                      <span>
+                        <!-- <img src="https://www.logolynx.com/images/logolynx/c3/c36093ca9fb6c250f74d319550acac4d.jpeg" alt="" width="50"> -->
+                      </span>
+                    </div>
+                    <button type="submit">Place Order</button>
+                    <!-- <input type="submit" > -->
                   </div>
-                  <p>
-                    Make your payment directly into our bank account. Please use
-                    your Order ID as the payment reference. Your order will not
-                    be shipped until the funds have cleared in our account.
-                  </p>
-                  <div>
-                    <input type="radio" name="dbt" value="cd" /> Cash on
-                    Delivery
-                  </div>
-                  <div>
-                    <input type="radio" name="dbt" value="cd" /> Paypal
-                    <span>
-                      <!-- <img src="https://www.logolynx.com/images/logolynx/c3/c36093ca9fb6c250f74d319550acac4d.jpeg" alt="" width="50"> -->
-                    </span>
-                  </div>
-                  <button type="button">Place Order</button>
                 </div>
-              </div>
+              </form>
             </div>
           </section>
 

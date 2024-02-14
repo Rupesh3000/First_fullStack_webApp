@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const userModel = require("./users");
+const orderModel = require("./order");
 const passport = require("passport");
 const localStrategy = require("passport-local");
 const getProductData = require("../productData");
@@ -27,10 +28,6 @@ router.get("/loginPage", function (req, res) {
 
 router.get("/profile", isLoggedIn, function (req, res) {
   res.render("profile");
-});
-
-router.get("/buyingPage", function (req, res) {
-  res.render("buyingPage");
 });
 
 router.post("/register", function (req, res) {
@@ -72,5 +69,26 @@ function isLoggedIn(req, res, next) {
   }
   res.redirect("/loginPage");
 }
+
+router.get("/thankyou" , function(req , res) {
+  res.send("order is done")
+})
+router.post('/submit-order', (req, res) => {
+  const {emailorusername, firstname, lastname, address, companyname, country, state, city, pincode, phone } = req.body;
+
+  const newOrder = new orderModel({ emailorusername, firstname, lastname, address, companyname, country, state, city, pincode, phone });
+  newOrder.save()
+    .then(savedOrder => {
+      // console.log(savedOrder);
+      res.redirect('/thankyou');
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).send('Error saving order to database');
+    });
+ 
+});
+
+
 
 module.exports = router;

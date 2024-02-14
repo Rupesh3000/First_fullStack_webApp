@@ -111,16 +111,16 @@ nav a.active {
 .form-container {
   width: 95%;
   background-color: #36454f;
-  display: flex;
-  gap: 28px;
 }
 
-.form-container .form-info {
-  width: 60%;
+.form-info {
+  width: 100%;
   background-color: #36454f;
+  display: flex;
+  justify-content: space-around;
 }
 .form-container .payment-info {
-  width: 40%;
+  width: 30%;
   background-color: #36454f;
 }
 .imgDiv {
@@ -193,56 +193,48 @@ nav a.active {
   border: solid 1px white;
   background-color: #36454f;
 }
-.user-mail {
-  background-color: #36454f;
-}
-.user-mail h2 {
-  padding: 20px 0px 20px 10px;
-  background-color: #36454f;
-}
-.user-mail input {
-  background-color: #36454f;
-  height: 40px;
-  width: 100%;
-  padding-left: 10px;
-  border: solid 1px white;
-}
+
 
 .billing-details {
-  background-color: #36454f;
+  background-color: #f02b15;
   display: flex;
   flex-direction: column;
+  width: 60%;
+ 
 }
 .billing-details .inputs {
   background-color: #36454f;
+  width: 100%;
+  /* display: flex; */
+  flex-direction: column;
 }
-.billing-details .inputs input {
-  margin: 10px 0px;
-}
+
 
 .billing-details h2 {
   padding: 20px 0px 20px 10px;
   background-color: #36454f;
 }
 
-.billing-details input {
+.billing-details .inputs input {
+  margin: 10px 0px;
   background-color: #36454f;
   height: 40px;
   padding-left: 10px;
   border: solid 1px white;
-  width: 40%;
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  
 }
 
-.billing-details #last-name {
-  margin-left: 40px;
-}
-.billing-details #company-name {
-  width: 100%;
-}
+/* .billing-details #lastname {
+  width: 50px;
+} */
 
 .Yorder {
   margin-top: 20px;
-  width: 90%;
+  width: 100%;
   background-color: #36454f;
   /* border: 1px solid #dadada; */
 }
