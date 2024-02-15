@@ -14,8 +14,9 @@ router.get("/", function (req, res) {
   res.render("index", { isAuthenticated: req.isAuthenticated() });
 });
 
-router.get("/buyingPage/:productId", function (req, res, next) {
+router.get("/buyingPage/:productId", async function (req, res, next) {
   let productData = getProductData(req.params.productId);
+  
   res.render("buyingPage", {
     title: productData.name,
     ...productData,
@@ -23,11 +24,14 @@ router.get("/buyingPage/:productId", function (req, res, next) {
 });
 
 router.get("/loginPage", function (req, res) {
-  res.render("loginPage");
+  res.render("loginPage", {error: req.flash("error")});
 });
 
-router.get("/profile", isLoggedIn, function (req, res) {
-  res.render("profile");
+router.get("/profile", isLoggedIn, async function (req, res) {
+  const user = await userModel.findOne({
+    username: req.session.passport.user
+  })
+  res.render("profile", {user});
 });
 
 router.post("/register", function (req, res) {
@@ -50,6 +54,7 @@ router.post(
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/loginPage",
+    failureFlash: true
   }),
   function (req, res) {}
 );
@@ -70,25 +75,45 @@ function isLoggedIn(req, res, next) {
   res.redirect("/loginPage");
 }
 
-router.get("/thankyou" , function(req , res) {
-  res.send("order is done")
-})
-router.post('/submit-order', (req, res) => {
-  const {emailorusername, firstname, lastname, address, companyname, country, state, city, pincode, phone } = req.body;
-
-  const newOrder = new orderModel({ emailorusername, firstname, lastname, address, companyname, country, state, city, pincode, phone });
-  newOrder.save()
-    .then(savedOrder => {
-      // console.log(savedOrder);
-      res.redirect('/thankyou');
-    })
-    .catch(err => {
-      console.error(err);
-      res.status(500).send('Error saving order to database');
-    });
- 
+router.get("/thankyou", function (req, res) {
+  res.send("order is done");
 });
+router.post("/submit-order", (req, res) => {
+  const {
+    emailorusername,
+    firstname,
+    lastname,
+    address,
+    companyname,
+    country,
+    state,
+    city,
+    pincode,
+    phone,
+  } = req.body;
 
-
+  const newOrder = new orderModel({
+    emailorusername,
+    firstname,
+    lastname,
+    address,
+    companyname,
+    country,
+    state,
+    city,
+    pincode,
+    phone,
+  });
+  newOrder
+    .save()
+    .then((savedOrder) => {
+      // console.log(savedOrder);
+      res.redirect("/thankyou");
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error saving order to database");
+    });
+});
 
 module.exports = router;

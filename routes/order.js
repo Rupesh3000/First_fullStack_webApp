@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 
 const orderSchema = new mongoose.Schema({
-    emailorusername: String,
+    // email: String,
     firstname: String,
     lastname: String,
     address: String,
