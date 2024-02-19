@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 const userModel = require("./users");
 const orderModel = require("./order");
+const productModel = require("./product");
 const passport = require("passport");
 const localStrategy = require("passport-local");
 const getProductData = require("../productData");
@@ -14,24 +15,15 @@ router.get("/", function (req, res) {
   res.render("index", { isAuthenticated: req.isAuthenticated() });
 });
 
-router.get("/buyingPage/:productId", async function (req, res, next) {
-  let productData = getProductData(req.params.productId);
-  
-  res.render("buyingPage", {
-    title: productData.name,
-    ...productData,
-  });
-});
-
 router.get("/loginPage", function (req, res) {
-  res.render("loginPage", {error: req.flash("error")});
+  res.render("loginPage", { error: req.flash("error") });
 });
 
 router.get("/profile", isLoggedIn, async function (req, res) {
   const user = await userModel.findOne({
-    username: req.session.passport.user
-  })
-  res.render("profile", {user});
+    username: req.session.passport.user,
+  });
+  res.render("profile", { user });
 });
 
 router.post("/register", function (req, res) {
@@ -54,7 +46,7 @@ router.post(
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/loginPage",
-    failureFlash: true
+    failureFlash: true,
   }),
   function (req, res) {}
 );
@@ -75,12 +67,42 @@ function isLoggedIn(req, res, next) {
   res.redirect("/loginPage");
 }
 
+router.get(
+  "/buyingPage/:productId",
+  isLoggedIn,
+  async function (req, res, next) {
+    const user = req.user;
+    let productData = getProductData(req.params.productId);
+    const productId = new productModel({
+      image: productData.image,
+      name: productData.name,
+      price: productData.price,
+      description: productData.description,
+      user: user._id,
+    });
+
+    try {
+      await productId.save();
+    } catch (error) {
+      console.error("Error saving product:", error);
+      return next(error);
+    }
+
+    res.render("buyingPage", {
+      title: productData.name,
+      ...productData,
+    });
+  }
+);
+
 router.get("/thankyou", function (req, res) {
   res.send("order is done");
 });
-router.post("/submit-order", (req, res) => {
+router.post("/submit-order", async (req, res) => {
+  const user = req.user;
+
   const {
-    emailorusername,
+    email,
     firstname,
     lastname,
     address,
@@ -93,7 +115,7 @@ router.post("/submit-order", (req, res) => {
   } = req.body;
 
   const newOrder = new orderModel({
-    emailorusername,
+    email,
     firstname,
     lastname,
     address,
@@ -103,11 +125,17 @@ router.post("/submit-order", (req, res) => {
     city,
     pincode,
     phone,
+    user: user._id,
   });
   newOrder
     .save()
-    .then((savedOrder) => {
-      // console.log(savedOrder);
+    .then(async (savedOrder) => {
+      await userModel.findByIdAndUpdate(user._id, {
+        $push: {
+          orders: savedOrder._id,
+        },
+      });
+
       res.redirect("/thankyou");
     })
     .catch((err) => {

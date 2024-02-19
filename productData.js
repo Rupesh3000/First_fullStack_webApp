@@ -5,10 +5,8 @@ function getProductData(productId) {
   switch (productId) {
     case "product1":
       return {
-        image: "img_1.jpg",
-        name: "Grey Snakeskin",
-        price: "$90.00",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        title: productData.name,
+        ...productData,
       };
     case "product2":
       return {

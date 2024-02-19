@@ -7,6 +7,12 @@ const userSchema = mongoose.Schema({
   username: String,
   email: String,
   password: String,
+  orders: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "order",
+    },
+  ],
 });
 
 userSchema.plugin(plm, {
