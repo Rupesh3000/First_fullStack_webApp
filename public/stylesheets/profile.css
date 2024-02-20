@@ -47,9 +47,11 @@ nav a {
   transition: 0.3s;
   background-color: #2c2d2f;
 }
-nav a:hover,
-nav a.active {
-  color: #0ef;
+a:hover{
+  color: white;
+  padding: 10px;
+  background-color: black;
+  border-radius: 9px;
 }
 #login {
   padding: 8px 15px;
@@ -57,11 +59,17 @@ nav a.active {
   border-radius: 10px;
   border: none;
   text-align: center;
-  transition: all 0.5s ease-out;
+  transition: 0.3s;
   background-color: black;
   color: white;
   cursor: pointer;
   text-decoration: none;
+}
+#login:hover {
+  color: white;
+  padding: 10px 20px;
+  background-color: black;
+  border-radius: 9px;
 }
 
 .main-container {
@@ -92,12 +100,11 @@ nav a.active {
 
 .option-container {
   width: 30%;
-  /* height: 100%; */
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  border: solid black 2px;
+  border: solid white 3px;
 }
 
 .img-div {
@@ -109,14 +116,20 @@ nav a.active {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-bottom: solid black 2px;
-  border-left: solid black 2px;
-  border-right: solid black 2px;
+  border-bottom: solid white 2px;
+  border-left: solid white 2px;
+  border-right: solid white 2px;
 }
 .img-div img {
   width: 130px;
   height: 200px;
   border-radius: 50% 50%;
+}
+
+.img-div h2 {
+  color: white;
+  font-size: 20px;
+  margin-top: 9px;
 }
 #account-setting {
   background-color: red;
@@ -139,7 +152,13 @@ nav a.active {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: solid black 2px;
+  border-bottom: solid white 2px;
+  color: black;
+  font-weight: bold;
+  font-size: 17px;
+}
+.option:hover {
+ color: white;
 }
 .info-container {
   width: 60%;

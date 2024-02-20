@@ -112,6 +112,8 @@ router.post("/submit-order", async (req, res) => {
     city,
     pincode,
     phone,
+    size,
+    quantity,
   } = req.body;
 
   const newOrder = new orderModel({
@@ -125,6 +127,8 @@ router.post("/submit-order", async (req, res) => {
     city,
     pincode,
     phone,
+    size,
+    quantity,
     user: user._id,
   });
   newOrder
